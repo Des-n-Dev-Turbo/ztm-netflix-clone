@@ -82,6 +82,7 @@ const LoginPage = () => {
     <div className={styles.container}>
       <Head>
         <title>Netflix - SignIn</title>
+        <link rel="icon" href="/static/N.png" />
       </Head>
       <header className={styles.header}>
         <div className={styles.headerWrapper}>

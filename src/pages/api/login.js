@@ -35,9 +35,9 @@ const handler = async (req, res) => {
       }
 
       setTokenCookie(token, res);
-      res.json({ done: true, token });
+      res.json({ done: true, token, message: 'Successfully logged In' });
     } catch (error) {
-      res.status(500).json({ error: error });
+      res.status(500).json({ message: error });
     }
   }
 };

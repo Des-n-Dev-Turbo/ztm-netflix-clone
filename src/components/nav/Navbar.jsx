@@ -12,13 +12,16 @@ const Navbar = () => {
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [username, setUsername] = useState('');
+  const [DIDToken, setDIDToken] = useState('');
 
   useEffect(() => {
     (async () => {
       try {
         const { email } = await magic.user.getInfo();
+        const DIdToken = await magic.user.getIdToken();
         if (email) {
           setUsername(email);
+          setDIDToken(DIdToken);
         }
       } catch (error) {
         console.log(error);
@@ -29,8 +32,20 @@ const Navbar = () => {
   const handleSignOut = async (e) => {
     e.preventDefault();
 
-    await magic.user.logout();
-    router.replace('/login');
+    try {
+      const response = await fetch('/api/logout', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${DIDToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      const res = await response.json();
+    } catch (error) {
+      console.error('Error logging out', error);
+      router.replace('/login');
+    }
   };
 
   const handleOnClickHome = (e) => {
