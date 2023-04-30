@@ -27,7 +27,7 @@ This project is donet to showcase my capabilities as a developer. The project is
 
 The Project is deployed on Vercel.
 
-> [ZTM Netflix Clone](https://a.com)
+> [ZTM Netflix Clone](https://ztm-netflix-clone.vercel.app/)
 
 ---
 
